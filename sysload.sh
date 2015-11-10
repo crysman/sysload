@@ -3,11 +3,12 @@
 # crysman (copyleft) 2015
 
 # changelog:
-#  1.2 used memory patched to display correct value
-#  1.1 instead of free mem, used mem is being used
-#  1.0 initial release
+#  1.2a date format changed - there is a comma now instead of space
+#  1.2  used memory patched to display correct value   
+#  1.1  instead of free mem, used mem is being used
+#  1.0  initial release
 
-date=`date "+%Y-%m-%d %H:%M:%S"`
+date=`date "+%Y-%m-%d,%H:%M:%S"`
 hostname=`hostname`
 
 #loadavg values:
@@ -17,6 +18,7 @@ loadavg=`cat /proc/loadavg`
 cpuN=`grep "processor.*:" /proc/cpuinfo | wc -l`
 
 #used memory (properly calculated with buffers and cache):
+#more info e.g. here http://www.linuxatemyram.com/
 memStats=`grep -E "^MemTotal|^MemFree|^Buffers|^Cached" /proc/meminfo`
 memTotal=`echo "$memStats" | grep "MemTotal" | grep -Eo "[[:digit:]]+"`
 memFree=`echo "$memStats" | grep "MemFree" | grep -Eo "[[:digit:]]+"`
